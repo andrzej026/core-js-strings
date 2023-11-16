@@ -259,6 +259,7 @@ function endsWith(str, substr) {
  *   formatTime(0, 0) => "00:00"
  */
 function formatTime(minutes, seconds) {
+  // 14 ПРИДУМАТЬ ЧТО-ТО ДРУГОЕ
   let time = `${minutes}:${seconds}`;
   if (minutes < 10 || seconds < 10) {
     time = `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(
@@ -267,7 +268,6 @@ function formatTime(minutes, seconds) {
     )}`;
   }
   return time;
-  // 14 ПРИДУМАТЬ ЧТО-ТО ДРУГОЕ
 }
 
 /**
@@ -332,8 +332,15 @@ function containsSubstring(str, substring) {
  *   countVowels('aEiOu') => 5
  *   countVowels('XYZ') => 1
  */
-function countVowels(/* str */) {
-  throw new Error('Not implemented');
+function countVowels(str) {
+  const vowelsArray = [];
+  const vowelsReg = /[aeiouy]/gi;
+  for (let i = 0; i < str.length; i += 1) {
+    if (str[i].match(vowelsReg)) {
+      vowelsArray.push(str[i]);
+    }
+  }
+  return vowelsArray.length;
 }
 
 /**
@@ -349,8 +356,11 @@ function countVowels(/* str */) {
  *   isPalindrome('apple') => false
  *   isPalindrome('No lemon, no melon') => true
  */
-function isPalindrome(/* str */) {
-  throw new Error('Not implemented');
+function isPalindrome(str) {
+  const spaceReg = /[?!,\s]/g;
+  const cleanStr = str.replace(spaceReg, '').toLowerCase();
+  return cleanStr === cleanStr.split('').reverse().join('');
+  // а почему циклом-то нельзя?
 }
 
 /**
