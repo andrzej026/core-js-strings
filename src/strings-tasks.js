@@ -155,8 +155,15 @@ function repeatString(str, times) {
  *   removeFirstOccurrences('I like legends', 'end') => 'I like legs'.
  *   removeFirstOccurrences('ABABAB', 'BA') => 'ABAB'.
  */
-function removeFirstOccurrences(/* str, value */) {
-  throw new Error('Not implemented');
+function removeFirstOccurrences(str, value) {
+  if (str.includes(value)) {
+    return (
+      str.slice(0, str.indexOf(value)) +
+      str.slice(str.indexOf(value) + value.length)
+    );
+  }
+  return str;
+  // КАК ТУТ ВПИХНУТЬ INDEXOF ВООБЩЕ НЕ ПОЙМУ
 }
 
 /**
@@ -171,8 +178,14 @@ function removeFirstOccurrences(/* str, value */) {
  *   removeLastOccurrences('I like legends', 'end') => 'I like legs'.
  *   removeLastOccurrences('ABABAB', 'BA') => 'ABAB'.
  */
-function removeLastOccurrences(/* str, value */) {
-  throw new Error('Not implemented');
+function removeLastOccurrences(str, value) {
+  if (str.includes(value)) {
+    return (
+      str.slice(0, str.lastIndexOf(value)) +
+      str.slice(str.lastIndexOf(value) + value.length)
+    );
+  }
+  return str;
 }
 
 /**
@@ -187,8 +200,19 @@ function removeLastOccurrences(/* str, value */) {
  *   sumOfCodes('') => 0
  *   sumOfCodes() => 0
  */
-function sumOfCodes(/* str */) {
-  throw new Error('Not implemented');
+function sumOfCodes(str) {
+  if (!str) {
+    return 0;
+  }
+  const arr = [];
+  for (let i = 0; i < str.length; i += 1) {
+    arr.push(str.charCodeAt(i));
+  }
+  let sum = 0;
+  for (let i = 0; i < arr.length; i += 1) {
+    sum += arr[i];
+  }
+  return sum;
 }
 
 /**
@@ -202,8 +226,8 @@ function sumOfCodes(/* str */) {
  *   startsWith('Hello World', 'World') => false
  *   startsWith('Hello World', 'Hello') => true
  */
-function startsWith(/* str, substr */) {
-  throw new Error('Not implemented');
+function startsWith(str, substr) {
+  return str.startsWith(substr);
 }
 
 /**
@@ -217,8 +241,8 @@ function startsWith(/* str, substr */) {
  *   endsWith('Hello World', 'World') => true
  *   endsWith('Hello World', 'Hello') => false
  */
-function endsWith(/* str, substr */) {
-  throw new Error('Not implemented');
+function endsWith(str, substr) {
+  return str.endsWith(substr);
 }
 
 /**
@@ -236,6 +260,7 @@ function endsWith(/* str, substr */) {
  */
 function formatTime(/* minutes, seconds */) {
   throw new Error('Not implemented');
+  // 14 ПРИДУМАТЬ ЧТО-ТО ДРУГОЕ
 }
 
 /**
@@ -248,8 +273,8 @@ function formatTime(/* minutes, seconds */) {
  *   reverseString('abcdef') => 'fedcba'
  *   reverseString('12345') => '54321'
  */
-function reverseString(/* str */) {
-  throw new Error('Not implemented');
+function reverseString(str) {
+  return str.split('').reverse().join('');
 }
 
 /**
@@ -263,8 +288,8 @@ function reverseString(/* str */) {
  *   orderAlphabetically('textbook') => 'bekoottx'
  *   orderAlphabetically('abc123xyz') => '123abcxyz'
  */
-function orderAlphabetically(/* str */) {
-  throw new Error('Not implemented');
+function orderAlphabetically(str) {
+  return str.split('').sort().join('');
 }
 
 /**
@@ -279,8 +304,11 @@ function orderAlphabetically(/* str */) {
  *   containsSubstring('JavaScript is Fun', 'Python') => false
  *   containsSubstring('12345', '34') => true
  */
-function containsSubstring(/* str, substring */) {
-  throw new Error('Not implemented');
+function containsSubstring(str, substring) {
+  if (str.includes(substring)) {
+    return true;
+  }
+  return false;
 }
 
 /**
